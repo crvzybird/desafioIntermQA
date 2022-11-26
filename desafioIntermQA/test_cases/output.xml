@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.8.10 on linux)" generated="20221125 20:47:23.197" rpa="false" schemaversion="3">
+<suite id="s1" name="Extrato Test" source="/home/rtsd/Documents/desafioInterm/test_cases/extrato_test.robot">
+<test id="s1-t1" name="Realizar Remoção de uma Movimentação com sucesso como usuário logado" line="11">
+<kw name="Abra o Navegador na Página de Login" library="login_keywords">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221125 20:47:23.415" level="INFO">Opening browser 'Chrome' to base url 'https://seubarriga.wcaquino.me/login'.</msg>
+<status status="PASS" starttime="20221125 20:47:23.414" endtime="20221125 20:47:25.678"/>
+</kw>
+<status status="PASS" starttime="20221125 20:47:23.414" endtime="20221125 20:47:25.679"/>
+</kw>
+<kw name="Preencha com o Email fulano@fulano" library="login_keywords" sourcename="Preencha com o Email ${EMAIL}">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${USER_EMAIL}</arg>
+<arg>${EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221125 20:47:25.681" level="INFO">Typing text 'fulano@fulano' into text field 'email'.</msg>
+<status status="PASS" starttime="20221125 20:47:25.680" endtime="20221125 20:47:25.835"/>
+</kw>
+<status status="PASS" starttime="20221125 20:47:25.679" endtime="20221125 20:47:25.835"/>
+</kw>
+<kw name="Preencha com a Senha fulano" library="login_keywords" sourcename="Preencha com a Senha ${SENHA}">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${USER_PASS}</arg>
+<arg>${SENHA}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221125 20:47:25.837" level="INFO">Typing text 'fulano' into text field 'senha'.</msg>
+<status status="PASS" starttime="20221125 20:47:25.836" endtime="20221125 20:47:25.972"/>
+</kw>
+<status status="PASS" starttime="20221125 20:47:25.835" endtime="20221125 20:47:25.973"/>
+</kw>
+<kw name="Clica no Botão Entrar" library="login_keywords">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221125 20:47:25.975" level="INFO">Clicking button 'class=btn-primary'.</msg>
+<status status="PASS" starttime="20221125 20:47:25.974" endtime="20221125 20:47:26.578"/>
+</kw>
+<status status="PASS" starttime="20221125 20:47:25.973" endtime="20221125 20:47:26.578"/>
+</kw>
+<kw name="Clica no Menu Resumo Mensal" library="extrato_keywords">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${EXTRATO_BUTTON}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221125 20:47:26.579" endtime="20221125 20:47:26.627"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${EXTRATO_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221125 20:47:26.627" level="INFO">Clicking element 'xpath=//a[text()[contains(.,'Resumo Mensal')]]'.</msg>
+<status status="PASS" starttime="20221125 20:47:26.627" endtime="20221125 20:47:26.981"/>
+</kw>
+<status status="PASS" starttime="20221125 20:47:26.578" endtime="20221125 20:47:26.982"/>
+</kw>
+<kw name="Checa se a URL Atual é a de Extrato" library="extrato_keywords">
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20221125 20:47:26.988" level="INFO">${url} = https://seubarriga.wcaquino.me/extrato</msg>
+<status status="PASS" starttime="20221125 20:47:26.982" endtime="20221125 20:47:26.988"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${url}</arg>
+<arg>${EXTRATO_URL}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221125 20:47:26.988" endtime="20221125 20:47:26.989"/>
+</kw>
+<status status="PASS" starttime="20221125 20:47:26.982" endtime="20221125 20:47:26.990"/>
+</kw>
+<kw name="Clicar no ícone X no campo Ações para Remover Movimentação" library="extrato_keywords">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${REMOVER_BUTTON}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221125 20:47:26.991" endtime="20221125 20:47:27.042"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${REMOVER_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221125 20:47:27.043" level="INFO">Clicking element 'xpath=//*[contains(@class,'glyphicon-remove-circle')]'.</msg>
+<status status="PASS" starttime="20221125 20:47:27.042" endtime="20221125 20:47:27.278"/>
+</kw>
+<status status="PASS" starttime="20221125 20:47:26.990" endtime="20221125 20:47:27.278"/>
+</kw>
+<kw name="Checa se Mensagem de Sucesso é Movimentação removida com sucesso! para Extrato" library="extrato_keywords" sourcename="Checa se Mensagem de Sucesso é ${mensagem_esperada} para Extrato">
+<kw name="Captura Text de Toast de Remoção" library="extrato_keywords">
+<var>${obtida_mensagem}</var>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=alert-success</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221125 20:47:27.280" endtime="20221125 20:47:27.320"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${toast_message}</var>
+<arg>${TOAST_MESSAGE}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221125 20:47:27.356" level="INFO">${toast_message} = Movimentação removida com sucesso!</msg>
+<status status="PASS" starttime="20221125 20:47:27.320" endtime="20221125 20:47:27.356"/>
+</kw>
+<msg timestamp="20221125 20:47:27.357" level="INFO">${obtida_mensagem} = Movimentação removida com sucesso!</msg>
+<status status="PASS" starttime="20221125 20:47:27.279" endtime="20221125 20:47:27.357"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${obtida_mensagem}</arg>
+<arg>${mensagem_esperada}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20221125 20:47:27.357" endtime="20221125 20:47:27.357"/>
+</kw>
+<status status="PASS" starttime="20221125 20:47:27.278" endtime="20221125 20:47:27.358"/>
+</kw>
+<status status="PASS" starttime="20221125 20:47:23.412" endtime="20221125 20:47:27.358"/>
+</test>
+<status status="PASS" starttime="20221125 20:47:23.198" endtime="20221125 20:47:27.360"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Extrato Test">Extrato Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

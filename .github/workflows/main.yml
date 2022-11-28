@@ -1,0 +1,49 @@
+on:
+  pull_request:
+    types: [opened, reopened, closed]
+    branches: 'master/**'
+
+jobs:
+  job1:
+    name: Always on Pull Requests to master branch
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run Login Test
+      run: |
+        robot login_test.robot
+    - name: Run Cadastro Test
+      run: |
+        robot cadastro_test.robot 
+    - name: Run Conta Test
+      run: |
+        robot conta_test.robot
+    - name: Run Movimentação Test
+      run: |
+        robot movimentacao_test.robot
+    - name: Run Extrato Test
+      run: |
+        robot extrato_test.robot
+      
+  job2:
+    name: Always on Merge
+    runs-on: ubuntu-latest
+    
+    if: github.event.pull_request.merged == true
+    steps:
+    - name: Run Login Test
+      run: |
+        robot login_test.robot
+    - name: Run Cadastro Test
+      run: |
+        robot cadastro_test.robot 
+    - name: Run Conta Test
+      run: |
+        robot conta_test.robot
+    - name: Run Movimentação Test
+      run: |
+        robot movimentacao_test.robot
+    - name: Run Extrato Test
+      run: |
+        robot extrato_test.robot
+          
